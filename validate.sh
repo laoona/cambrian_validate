@@ -4,9 +4,9 @@ m=`date '+%m'`
 M=`date '+%m'`
 d=`date '+%d'`
 D=`date '+%d'`
-
-m=${m/#0/}
-d=${d/#0/}
+# 注释月日前导0
+# m=${m/#0/}
+# d=${d/#0/}
 
 ymd=${y}-${m}-${d}
 
@@ -34,12 +34,12 @@ validateMain() {
         succ_n=`expr ${succ_n} + 1`
 
         echo  -e "\033[32m success\033[0m url[${url}]"
-        echo "${url}" >> ${path}/urls.success.txt
+        echo "${ymd} ${url}" >> ${path}/urls.success.txt
         echo "success url[${url}]" >> ${path}/log.${ymd}.txt
     else    
         fail_n=`expr ${fail_n} + 1`
 
-        echo "${url}" >> ${path}/urls.fail.txt
+        echo "${ymd} ${url}" >> ${path}/urls.fail.txt
         echo -e "\033[31m fail\033[0m url[${url}] mesg[\033[31m${res}\033[0m]"
         echo "fail url[${url}] mesg[${res}]" >> ${path}/log.${ymd}.txt
     fi
