@@ -1,0 +1,11 @@
+backports-abc==0.5
+blessings==1.6
+certifi==2017.4.17
+curtsies==0.2.11
+greenlet==0.4.12
+lxml==3.8.0
+Pygments==2.2.0
+requests==2.14.2
+singledispatch==3.4.0.3
+six==1.10.0
+wcwidth==0.1.7
