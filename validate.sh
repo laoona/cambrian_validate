@@ -1,14 +1,14 @@
 #! /bin/bash
 y=`date '+%Y'`
 m=`date '+%m'`
-M=`date '+%m'`
 d=`date '+%d'`
-D=`date '+%d'`
+
 # 注释月日前导0
 # m=${m/#0/}
 # d=${d/#0/}
 
 ymd=${y}-${m}-${d}
+vtime=`date '+%Y-%m-%d %H:%M:%S'`
 
 base_path=$(cd `dirname $0`; pwd);
 path=${base_path}
@@ -34,16 +34,16 @@ validateMain() {
         succ_n=`expr ${succ_n} + 1`
 
         echo  -e "\033[32m success\033[0m url[${url}]"
-        echo "${ymd} ${url}" >> ${path}/urls.success.txt
+        echo "${vtime} ${url}" >> ${path}/urls.success.txt
         echo "success url[${url}]" >> ${path}/log.${ymd}.txt
-        echo "time[${ymd}] success url[${url}]" >> ${path}/log.txt
+        echo "time[${vtime}] success url[${url}]" >> ${path}/log.txt
     else    
         fail_n=`expr ${fail_n} + 1`
 
-        echo "${ymd} ${url}" >> ${path}/urls.fail.txt
+        echo "${vtime} ${url}" >> ${path}/urls.fail.txt
         echo -e "\033[31m fail\033[0m url[${url}] mesg[\033[31m${res}\033[0m]"
         echo "fail url[${url}] mesg[${res}]" >> ${path}/log.${ymd}.txt
-        echo "time[${ymd}] fail url[${url}] mesg[${res}]" >> ${path}/log.txt
+        echo "time[${vtime}] fail url[${url}] mesg[${res}]" >> ${path}/log.txt
     fi
 
 }
