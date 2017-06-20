@@ -29,7 +29,6 @@ fail_n=0
 validateMain() {
 
     url=$1
-    type=$2
     res=`/usr/bin/python ${validate_script} 1 ${url}`
 
     if [ "${#flag}" == "${#res}" ]
@@ -41,10 +40,7 @@ validateMain() {
         echo "${vtime} ${url}" >> ${path}/urls.success.txt
         echo "time[${HMS}] success url[${url}]" >> ${path}/log.${ymd}.txt
         echo "time[${vtime}] success url[${url}]" >> ${path}/log.txt
-
-        if [[ "${type}" == "id" ]]; then
-            echo "${url}" >> ${path}/urls.out.txt
-        fi
+        echo "${url}" >> ${path}/urls.out.txt
     else    
         fail_n=`expr ${fail_n} + 1`
 
@@ -73,7 +69,7 @@ then
     while [[ ${id} -le ${id_end} ]];
     do
         url="https://m.fh21.com.cn/news/mip/${id}.html"
-        validateMain ${url} id
+        validateMain ${url}
         let "id++"
     done
 else
